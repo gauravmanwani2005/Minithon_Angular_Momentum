@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <!-- Left: Logo -->
+  <div class="logo">🌍 Eco-Footprint</div>
+
+  <!-- Right: Links -->
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/tracker">Tracker</a></li>
+    <li><a routerLink="/leaderboard">Leaderboard</a></li>
+
+    <!-- Conditional profile/login -->
+    <li *ngIf="isLoggedIn; else guestLinks">
+      <a routerLink="/profile">👤 Profile</a>
+    </li>
+    <ng-template #guestLinks>
+      <li><a routerLink="/login">Login / Register</a></li>
+    </ng-template>
+  </ul>
+</nav>
