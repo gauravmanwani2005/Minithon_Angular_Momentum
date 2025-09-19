@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
         alert('Login successful!');
         this.authService.login(email); // ✅ update login state globally
         this.router.navigate(['/dashboard']);
+        sessionStorage.setItem('loggedInUser', email);
+        
+        // V V V CHANGE THIS LINE V V V
+        this.router.navigate(['/profile']); 
       } else {
         this.loginError = 'Invalid email or password.';
       }

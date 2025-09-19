@@ -27,15 +27,16 @@ export class DatabaseService {
     console.log(this.users);
     this.blogs = JSON.parse(localStorage.getItem("blogs")?? "[]");
     console.log(this.blogs);
+
     this.isLoggedIn = localStorage.getItem('isLoggedIn');
     this.loggedInUser = localStorage.getItem("loggedInUser")
-    // this.DbBlogCount = Number(localStorage.getItem("DbBlogCount") ?? 0)
     this.nextBlogId = Number(localStorage.getItem("nextBlogId") ?? 1) 
     this.savedBlogs = JSON.parse(localStorage.getItem("savedBlogs")?? "[]");
   } 
   updateLoggedIn(value:any){
     this.isLoggedIn = value
     localStorage.setItem("isLoggedIn",this.isLoggedIn)
+    this.LoadData()
   }
 
   loggedInUser:any

@@ -17,7 +17,8 @@
     </li>
 
     <ng-template #guestLinks>
-      <li><a routerLink="/login">Login / Register</a></li>
+      <li><a routerLink="/login" *ngIf="!check()"> Login / Register</a></li>
+      <li><a routerLink="/login" *ngIf="check()"> Logout</a></li>
     </ng-template>
   </ul>
 </nav>

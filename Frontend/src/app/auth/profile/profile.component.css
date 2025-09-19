@@ -1,0 +1,93 @@
+/* Using :host to style the component's host element itself */
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg,  #09a148 0%,#09a148 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+  }
+  
+  .profile-card-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7b7c80 0%, #764ba2 100%);
+    color: white;
+    font-size: 4rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 10px 20px rgba(118, 75, 162, 0.3);
+  }
+  
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+  }
+  
+  .profile-details {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #eee;
+  }
+  
+  .detail-item strong {
+    color: #555;
+    font-weight: 600;
+  }
+  
+  .detail-item span {
+    color: #333;
+  }
+  
+  .logout-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+  }
+  
+  .logout-button:hover {
+    transform: translateY(-3px);
+    background-color: #c0392b;
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+  }
