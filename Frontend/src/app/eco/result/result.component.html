@@ -1,0 +1,32 @@
+<div class="eco-result-container">
+  <h2>Your Eco Footprint Result 🌍</h2>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar">
+    <div class="progress" 
+         [style.width.%]="percentage" 
+         [style.background]="categoryColor()"></div>
+  </div>
+
+  <h3 class="score">Score: {{ score }}</h3>
+  <p class="category" [style.color]="categoryColor()">
+    Category: {{ category }}
+  </p>
+
+  <!-- Message -->
+  <div class="message" [ngSwitch]="category">
+    <p *ngSwitchCase="'Low'">✅ Great job! Your footprint is low. Keep it up!</p>
+    <p *ngSwitchCase="'Medium'">⚠️ You’re on the right track but there’s room for improvement.</p>
+    <p *ngSwitchCase="'High'">❌ Your footprint is high. Consider making changes in your habits.</p>
+  </div>
+
+  <!-- Tips -->
+  <div class="tips-container">
+    <h4>Suggested Tips 🌱</h4>
+    <div class="tip-card" *ngFor="let tip of tips">
+      {{ tip }}
+    </div>
+  </div>
+
+  <button class="restart-btn" routerLink="/form">Start Again</button>
+</div>

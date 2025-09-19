@@ -1,0 +1,131 @@
+<div class="eco-form-container">
+  <div class="progress-bar">
+    <div class="progress" [style.width.%]="(currentStep / (totalSteps - 1)) * 100"></div>
+  </div>
+
+  <h2>{{ currentTitle }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-content">
+      <ng-container [ngSwitch]="currentStep">
+
+        <div *ngSwitchCase="0" class="form-step">
+          <div class="radio-group">
+            <input type="radio" id="transport-car" value="car" formControlName="transport">
+            <label for="transport-car">🚗 Car</label>
+
+            <input type="radio" id="transport-motorcycle" value="motorcycle" formControlName="transport">
+            <label for="transport-motorcycle">🏍️ Motorcycle</label>
+
+            <input type="radio" id="transport-public" value="public" formControlName="transport">
+            <label for="transport-public">🚌 Public Transport</label>
+
+            <input type="radio" id="transport-bike" value="bike" formControlName="transport">
+            <label for="transport-bike">🚲 Bicycle</label>
+
+            <input type="radio" id="transport-walk" value="walk" formControlName="transport">
+            <label for="transport-walk">🚶 Walking</label>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="1" class="form-step">
+          <label class="slider-label">{{ form.get('dailyKm')?.value }} km</label>
+          <input type="range" min="0" max="200" step="1" formControlName="dailyKm">
+        </div>
+
+        <div *ngSwitchCase="2" class="form-step">
+          <label class="slider-label">{{ form.get('flightsPerYear')?.value }} flights</label>
+          <input type="range" min="0" max="50" step="1" formControlName="flightsPerYear">
+        </div>
+
+        <div *ngSwitchCase="3" class="form-step">
+          <div class="radio-group">
+            <input type="radio" id="energy-renewable" value="renewable" formControlName="energySource">
+            <label for="energy-renewable">☀️ Renewable</label>
+
+            <input type="radio" id="energy-mixed" value="mixed" formControlName="energySource">
+            <label for="energy-mixed">⚡ Mixed</label>
+
+            <input type="radio" id="energy-nonrenewable" value="nonrenewable" formControlName="energySource">
+            <label for="energy-nonrenewable">🏭 Fossil Fuel</label>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="4" class="form-step">
+          <div class="radio-group">
+            <input type="radio" id="diet-vegan" value="vegan" formControlName="diet">
+            <label for="diet-vegan">🌱 Vegan</label>
+
+            <input type="radio" id="diet-veg" value="veg" formControlName="diet">
+            <label for="diet-veg">🧀 Vegetarian</label>
+
+            <input type="radio" id="diet-omnivore" value="omnivore" formControlName="diet">
+            <label for="diet-omnivore">🍗 Omnivore</label>
+
+            <input type="radio" id="diet-heavyMeat" value="heavyMeat" formControlName="diet">
+            <label for="diet-heavyMeat">🥩 Heavy Meat Eater</label>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="5" class="form-step">
+          <div class="radio-group">
+            <input type="radio" id="recycle-always" value="always" formControlName="recycle">
+            <label for="recycle-always">✅ Always</label>
+
+            <input type="radio" id="recycle-sometimes" value="sometimes" formControlName="recycle">
+            <label for="recycle-sometimes">⚠️ Sometimes</label>
+
+            <input type="radio" id="recycle-never" value="never" formControlName="recycle">
+            <label for="recycle-never">❌ Never</label>
+          </div>
+        </div>
+
+        <div *ngSwitchCase="6" class="form-step">
+          <div class="radio-group">
+            <input type="radio" id="plastic-none" value="none" formControlName="plasticUse">
+            <label for="plastic-none">🍃 Almost None</label>
+
+            <input type="radio" id="plastic-sometimes" value="sometimes" formControlName="plasticUse">
+            <label for="plastic-sometimes">♻️ Sometimes</label>
+
+            <input type="radio" id="plastic-daily" value="daily" formControlName="plasticUse">
+            <label for="plastic-daily">🗑️ Daily</label>
+          </div>
+        </div>
+
+        <div *ngSwitchDefault class="form-step">
+          <p>An error occurred or no step is active.</p>
+        </div>
+
+      </ng-container>
+    </div>
+
+    <div class="navigation-buttons">
+      <button type="button" class="nav-button" *ngIf="currentStep > 0 && currentStep <= totalSteps - 1" (click)="prevStep()">
+        Previous
+      </button>
+      <button type="button" class="nav-button" *ngIf="currentStep < totalSteps - 1" (click)="nextStep()">
+        Next
+      </button>
+      <button type="submit" class="nav-button submit" *ngIf="currentStep === totalSteps - 1">
+        Calculate Footprint
+      </button>
+    </div>
+  </form>
+
+  <div *ngIf="footprintResult !== null" 
+       class="result-container"
+       [attr.data-score]="footprintResult <= 20 ? 'low' : (footprintResult <= 40 ? 'medium' : 'high')">
+    <h3>Your Score: {{ footprintResult }}</h3>
+    <p *ngIf="footprintResult <= 20">
+      Great job! 🌱 Your environmental footprint is low. Keep up the green habits!
+    </p>
+    <p *ngIf="footprintResult > 20 && footprintResult <= 40">
+      You're on the right track. 👍 There are still a few areas where you can improve.
+    </p>
+    <p *ngIf="footprintResult > 40">
+      Uh oh! ⚠️ Your footprint is high. Consider making changes in your diet, transport, or energy use.
+    </p>
+    <button type="button" class="nav-button" (click)="currentStep = 0; footprintResult = null">Start Over</button>
+  </div>
+</div>
