@@ -1,0 +1,26 @@
+
+<div class="profile-card-container" *ngIf="user">
+
+    <div class="profile-avatar">
+      {{ userInitial }}
+    </div>
+  
+    <h2>Welcome, {{ user.name }}!</h2>
+    <p>Here are your account details.</p>
+  
+    <div class="profile-details">
+      <div class="detail-item">
+        <strong>Full Name</strong>
+        <span>{{ user.name }}</span>
+      </div>
+      <div class="detail-item">
+        <strong>Email Address</strong>
+        <span>{{ user.email }}</span>
+      </div>
+    </div>
+  
+    <button class="logout-button" (click)="logout()">
+      Logout
+    </button>
+  
+  </div>

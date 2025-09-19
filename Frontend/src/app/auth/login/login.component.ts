@@ -41,9 +41,10 @@ export class LoginComponent implements OnInit {
       const storedUser = JSON.parse(storedUserString);
       if (storedUser.password === password) {
         alert('Login successful!');
-        // Optionally, store login state and navigate
         sessionStorage.setItem('loggedInUser', email);
-        this.router.navigate(['/dashboard']); // Navigate to a dashboard or home page
+        
+        // V V V CHANGE THIS LINE V V V
+        this.router.navigate(['/profile']); 
       } else {
         this.loginError = 'Invalid email or password.';
       }

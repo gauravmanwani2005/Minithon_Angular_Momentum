@@ -6,6 +6,7 @@ import { ResultComponent } from './eco/result/result.component';
 // Import your components
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 const routes: Routes = [
   // Route for the login page
@@ -15,19 +16,20 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
   // Default route: Redirects to /login if the path is empty
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  //  {path: '', redirectTo: '/login', pathMatch: 'full' },
 
   // Wildcard route: Redirects to /login for any other path that doesn't match
-  { path: '**', redirectTo: '/login' },
+  // { path: '**', redirectTo: '/login' },
 
-    {
+  {
     path:'form',
     component:FormComponent
   },
   {
     path:'result',
     component:ResultComponent 
-  }
+  },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 
