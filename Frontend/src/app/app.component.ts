@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from './database.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frontend';
+  title = 'ECO FRIENDLY';
+  constructor(private dbService:DatabaseService){
+
+  }
+
+  check(){
+    return this.dbService.isLoggedIn
+  }
+  changeLoggedIn(){
+    this.dbService.updateLoggedIn(!this.dbService.isLoggedIn)
+  }
 }
